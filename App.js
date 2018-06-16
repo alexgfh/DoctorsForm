@@ -1,27 +1,49 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput, Image, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
-import DataInput from './DataInput';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+import FormList from './FormList';
 
-export default class App extends React.Component {
+class HomeScreen extends React.Component {
 
   render() {
     return (
-	<View style={{flex:1}}>
-	<View style={{justifyContent:'flex-start',alignItems:'center', backgroundColor:'blue',marginTop:20}}>
-<Image style={{margin:15,width: 99, height: 120}}
-	source={require('./images/checklist.png')}/>
-</View>
-      <View style={styles.container}>
-
-	
-        <DataInput
-	name="Heart Beat"/>
-        <DataInput
-	name="Systolic and Diastolic Pressures"/>
-	<DataInput
-	name="Weight"/>
+      <View style={{ flex: 1, alignItems: 'stretch', justifyContent: 'center',padding:5, backgroundColor:'blue' }}>
         <TouchableOpacity
-	style={{marginRight:40,
+	style={styles.nameButton}
+        onPress={()=>this.props.navigation.navigate('patient')}>
+	<Text style={{color:'white', textAlign:'center'}}>Vesa Harila</Text>
+        </TouchableOpacity>
+<TouchableOpacity
+	style={styles.nameButton}
+        onPress={()=>this.props.navigation.navigate('patient')}>
+	<Text style={{color:'white', textAlign:'center'}}>Maija Lintilä</Text>
+        </TouchableOpacity>
+<TouchableOpacity
+	style={styles.nameButton}
+        onPress={()=>this.props.navigation.navigate('patient')}>
+	<Text style={{color:'white', textAlign:'center'}}>Annikki Hirvi</Text>
+        </TouchableOpacity>
+<TouchableOpacity
+	style={styles.nameButton}
+        onPress={()=>this.props.navigation.navigate('patient')}>
+	<Text style={{color:'white', textAlign:'center'}}>Kalevi Vaara</Text>
+        </TouchableOpacity>
+<TouchableOpacity
+	style={styles.nameButton}
+        onPress={()=>this.props.navigation.navigate('patient')}>
+	<Text style={{color:'white', textAlign:'center'}}>Tyyne Hongisto</Text>
+        </TouchableOpacity>
+<TouchableOpacity
+	style={styles.nameButton}
+        onPress={()=>this.props.navigation.navigate('patient')}>
+	<Text style={{color:'white', textAlign:'center'}}>Leena Kononen</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
+const styles = StyleSheet.create({
+  nameButton: {marginRight:40,
 	paddingRight:20,
 	paddingLeft:20,
 	marginLeft:40,
@@ -30,21 +52,19 @@ export default class App extends React.Component {
 	paddingTop:20,
 	paddingBottom:20,
 	borderRadius:25, 
-	backgroundColor: 'purple'}}
-        onPress={()=>0}>
-	<Text style={{color:'white'}}>Submit</Text>
-        </TouchableOpacity>
-      </View>
-</View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#00f',
-    justifyContent: 'space-between',
-    alignItems: 'stretch'
-  },
+	backgroundColor: 'purple'},
 });
+
+export default createStackNavigator(
+  {
+    screen: HomeScreen,
+    patient: FormList
+  },
+  {
+    initialRouteName: 'screen',
+headerMode: 'none',
+  navigationOptions: {
+    headerVisible: false,
+  }
+  }
+);
